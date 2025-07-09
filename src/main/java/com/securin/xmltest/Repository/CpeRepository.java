@@ -2,8 +2,9 @@ package com.securin.xmltest.Repository;
 
 import com.securin.xmltest.Entity.CpeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CpeRepository extends JpaRepository<CpeEntity, Integer> {
+public interface CpeRepository extends JpaRepository<CpeEntity, Integer> , JpaSpecificationExecutor<CpeEntity> {
 }

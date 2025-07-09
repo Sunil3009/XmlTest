@@ -19,8 +19,11 @@ import java.io.FileNotFoundException;
 @Component
 public class Reader implements ItemReader<CpeItem> {
 
+    int MAX_DATA_COUNT = 100000;
     XmlMapper xmlMapper = new XmlMapper();
     XMLStreamReader reader;
+    int counter = 0;
+
 
     public Reader() throws FileNotFoundException, XMLStreamException {
         XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -31,7 +34,8 @@ public class Reader implements ItemReader<CpeItem> {
     public CpeItem read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
         int event= reader.next();
         while(event!= XMLStreamConstants.END_DOCUMENT){
-            if(event==XMLStreamReader.START_ELEMENT && reader.getLocalName().equals("cpe-item")){
+            if(event==XMLStreamReader.START_ELEMENT && reader.getLocalName().equals("cpe-item")&& counter<MAX_DATA_COUNT){
+                counter++;
                 return xmlMapper.readValue(reader, CpeItem.class);
             }
             event = reader.next();

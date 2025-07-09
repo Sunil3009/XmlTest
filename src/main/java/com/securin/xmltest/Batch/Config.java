@@ -37,14 +37,14 @@ public class Config {
                 .reader(itemReader)
                 .processor(itemProcessor)
                 .writer(itemWriter)
-                .taskExecutor(taskExecutor())
+//                .taskExecutor(taskExecutor())
                 .build();
     }
 
-    @Bean
-    public TaskExecutor taskExecutor() {
-        SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
-        taskExecutor.setConcurrencyLimit(10);
-        return taskExecutor;
-    }
+//    @Bean
+//    public TaskExecutor taskExecutor() {
+//        SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor();
+//        taskExecutor.setConcurrencyLimit(10);
+//        return taskExecutor;
+//    }
 }
